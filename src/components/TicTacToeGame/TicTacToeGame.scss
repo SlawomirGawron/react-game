@@ -1,0 +1,17 @@
+.tic-tac-toe-container {
+  text-align: center;
+}
+
+.tic-tac-toe-box {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  display: inline-block;
+  line-height: 80px;
+}
+
+.tic-tac-toe-board {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 320px;
+}
