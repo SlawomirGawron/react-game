@@ -50,7 +50,7 @@ export function analyzeBoard(board) {
 /* endOfGameCheck
  * Purpose: Return a message based on the result of analyzeBoard.
  * Input: A string "X", "O", or null
- * Return: HTML or null
+ * Return: HTML if a player has won or null if the game isn't over.
  */
 export function endOfGameCheck(playerMoveResult) {
     if (playerMoveResult === "X") {

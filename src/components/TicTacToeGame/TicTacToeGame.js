@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import './TicTacToeGame.scss';
 import {analyzeBoard, endOfGameCheck} from './gameLogic/logic';
 
@@ -18,7 +19,9 @@ class TicTacToeGame extends Component {
             BoxGrid: null
         };
 
+        // const BoxGrid = null;
         this.BoxGridValue = this.BoxGridValue.bind(this);
+        this.resetHandleClick = this.resetHandleClick.bind(this);
     }
 
     componentDidMount() {
@@ -39,7 +42,7 @@ class TicTacToeGame extends Component {
                     <div
                         key={index}
                         className="tic-tac-toe-box"
-                        onClick={() => this.handleClick(index)}
+                        onClick={() => this.gridHandleClick(index)}
                     >
                         {box}
                     </div>
@@ -82,10 +85,7 @@ class TicTacToeGame extends Component {
         newBoard[index] = this.state.player;
 
         this.setState({
-            board: newBoard
-        });
-
-        this.setState({
+            board: newBoard,
             BoxGrid: this.BoxGridValue()
         });
     }
@@ -110,7 +110,7 @@ class TicTacToeGame extends Component {
      */
     displayMessage() {
         if (this.state.gameStatus !== null) {
-            return <h2>{this.state.gameStatus}</h2>;
+            return this.state.gameStatus;
         } else {
             return this.turnMessage();
         }
@@ -130,25 +130,50 @@ class TicTacToeGame extends Component {
         }
     }
 
-    /* handleClick
+    /* gridHandleClick
      * Purpose: Handles the result of a user clicking on a box on the Tic Tac Toe board.
      * Input: Where the player moved on the board.
      * Return: n/a
      * Result: Updates to various parts of the game.
      */
-    handleClick(index) {
-        if (this.nextPlayer(index)) {
+    gridHandleClick(index) {
+        if (this.nextPlayer(index) && (this.state.gameStatus === null)) {
             this.updateBoard(index);
-
             this.gameLogicCheck();
         }
     }
+
+    /* resetHandleClick
+     * Purpose: Resets the Tic Tac Toe game.
+     * Input: n/a
+     * Return: n/a
+     * Result: Changes all of the states back to their initial values.
+     */
+    resetHandleClick() {
+        this.setState({
+            board: Array(9).fill(null),
+            player: "X",
+            gameStatus: null,
+            BoxGrid: this.BoxGridValue()
+        });
+    }
+
 
     render() {
         return (
             <div className="tic-tac-toe-container">
                 <h1>Tic Tac Toe Game</h1>
                 {this.displayMessage()}
+                <Button
+                    variant="outlined"
+                    color="inherit"
+                    className="Tic-Tac-Toe-reset-button"
+                    onClick={()=> this.resetHandleClick()}
+                >
+                    Reset
+                </Button>
+                <br/>
+                <br/>
                 <div className="tic-tac-toe-board">
                     {this.state.BoxGrid}
                 </div>
