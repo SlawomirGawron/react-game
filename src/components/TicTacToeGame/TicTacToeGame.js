@@ -19,7 +19,6 @@ class TicTacToeGame extends Component {
             BoxGrid: null
         };
 
-        // const BoxGrid = null;
         this.BoxGridValue = this.BoxGridValue.bind(this);
         this.resetHandleClick = this.resetHandleClick.bind(this);
     }
@@ -156,6 +155,7 @@ class TicTacToeGame extends Component {
             gameStatus: null,
             BoxGrid: this.BoxGridValue()
         });
+        window.location.reload();
     }
 
 
