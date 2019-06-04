@@ -5,10 +5,14 @@
  */
 
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import './TicTacToeGame.scss';
 import {analyzeBoard, endOfGameCheck} from './gameLogic/Logic';
-import {createBoardArray} from './utilities/utilities';
+import {createBoardArray} from '../../utilities/utilities';
+import ResetButton from '../../buttons/resetButton/ResetButton';
+import Title from '../../text/title/Title';
+import EndOfGameText from '../../text/endOfGameText/EndOfGameText';
+import {player, gameStatus} from '../../utilities/ENUMS';
+import Message from "../../text/message/Message";
 
 class TicTacToeGameTemp extends Component {
     constructor(props) {
@@ -161,22 +165,20 @@ class TicTacToeGameTemp extends Component {
 
 
     render() {
+        console.log(gameStatus.GAMEINPROGRESS);
         return (
             <div className="tic-tac-toe-container">
-                <h1>Tic Tac Toe Game</h1>
+                <Title text="Tic Tac Toe Game"/>
+                <Message text="Player one(X), choose a square"/>
                 {this.displayMessage()}
-                <Button
-                    variant="outlined"
-                    color="inherit"
-                    className="Tic-Tac-Toe-reset-button"
-                    onClick={()=> this.resetHandleClick()}
-                >
-                    Reset
-                </Button>
+                <ResetButton onClick={()=> this.resetHandleClick()}/>
                 <br/>
                 <br/>
                 <div className="tic-tac-toe-board">
                     {this.state.BoxGrid}
+                </div>
+                <div style={{display: ""}}>
+                    <EndOfGameText gameStatus={gameStatus.GAMEINPROGRESS}/>
                 </div>
             </div>
         );

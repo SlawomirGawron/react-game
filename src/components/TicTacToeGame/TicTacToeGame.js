@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import './TicTacToeGame.scss';
 import {analyzeBoard, endOfGameCheck} from './gameLogic/Logic';
-import {createBoardArray} from './utilities/utilities';
+import {createBoardArray} from '../../utilities/utilities';
 
 class TicTacToeGame extends Component {
     constructor(props) {
