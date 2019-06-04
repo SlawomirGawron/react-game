@@ -10,7 +10,7 @@ import './TicTacToeGame.scss';
 import {analyzeBoard, endOfGameCheck} from './gameLogic/Logic';
 import {createBoardArray} from './utilities/utilities';
 
-class TicTacToeGame extends Component {
+class TicTacToeGameTemp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,13 +39,13 @@ class TicTacToeGame extends Component {
     BoxGridValue() {
         return (
             this.state.board.map((box, index) =>
-                    <div
-                        key={index}
-                        className="tic-tac-toe-box"
-                        onClick={() => this.gridHandleClick(index)}
-                    >
-                        {box}
-                    </div>
+                <div
+                    key={index}
+                    className="tic-tac-toe-box"
+                    onClick={() => this.gridHandleClick(index)}
+                >
+                    {box}
+                </div>
             )
         );
     }
@@ -183,4 +183,4 @@ class TicTacToeGame extends Component {
     }
 }
 
-export default TicTacToeGame;
+export default TicTacToeGameTemp;

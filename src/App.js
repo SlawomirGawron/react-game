@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import SnakeGame from "./components/SnakeGame/SnakeGame";
-import TicTacToeGame from './components/TicTacToeGame/TicTacToeGame';
+import TicTacToeGameTemp from './components/TicTacToeGame/TicTacToeGameTemp';
 
 function App() {
   return (
     <div className="App">
-        <TicTacToeGame/>
+        <TicTacToeGameTemp/>
     </div>
   );
 }
