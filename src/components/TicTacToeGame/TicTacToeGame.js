@@ -155,7 +155,7 @@ class TicTacToeGame extends Component {
             gameStatus: null,
             BoxGrid: this.BoxGridValue()
         });
-        window.location.reload();
+        //window.location.reload();
     }
 
 
