@@ -1,5 +1,5 @@
 // Generic functions that will be reused.
 
-export function createBoardArray(length = 0, initialValue = null) {
+export function createArrayWithInitialValue(length = 0, initialValue = null) {
     return Array(length).fill(initialValue);
 }
