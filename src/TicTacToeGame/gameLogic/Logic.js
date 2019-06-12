@@ -1,4 +1,3 @@
-import React from 'react';
 import {players, gameStatusValues} from 'src/common/utilities/ENUMS.js';
 
 function analyzeThreeTiles(indexOnBoard, board) {

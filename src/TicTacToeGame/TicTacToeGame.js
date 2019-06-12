@@ -56,31 +56,34 @@ class TicTacToeGame extends Component {
     }
 
     endOfGameCheck() {
+        console.log("EoG");
+    }
+
+    gameMessage() {
         const {gameStatus} = this.state;
+        const messageToDisplay = "Game Status: " + gameStatus;
 
-        // NEWGAME: "Starting a new Game",
-        //     INVALIDMOVE: "A player has made an invalid move",
-        //     VALIDMOVE: "A player has made a valid move",
-        //     GAMEINPROGRESS: "Currently in progress",
-        //     PLAYERONEWIN: "Player 1 (X) has won",
-        //     PLAYERTWOWIN: "Player 2 (Y) has won",
-        //     TIE: "Tie",
-        //     ERROR: "Error"
+        if ( (gameStatus === gameStatusValues.NEWGAME)
+             || (gameStatus === gameStatusValues.PLAYERONEWIN)
+             || (gameStatus === gameStatusValues.PLAYERTWOWIN)
+             || (gameStatus === gameStatusValues.TIE)
+             || (gameStatus === gameStatusValues.ERROR)
+        ) {
+            return <EndOfGameText gameStatus={messageToDisplay}/>;
 
-        if (gameStatus === gameStatusValues.PLAYERONEWIN) {
-            return <Message text={gameStatusValues.PLAYERTWOWIN}/>;
-
-        } else if (gameStatus === gameStatusValues.PLAYERTWOWIN) {
-            return <Message text={gameStatusValues.PLAYERTWOWIN}/>;
-
+        } else if ( (gameStatus === gameStatusValues.GAMEINPROGRESS)
+                    || (gameStatus === gameStatusValues.VALIDMOVE)
+                    || (gameStatus === gameStatusValues.INVALIDMOVE)
+        ) {
+            return <Message text={messageToDisplay}/>;
         } else {
-            return <EndOfGameText gameStatus={gameStatus}/>;
+            return <EndOfGameText gameStatus={"Game Status: " + gameStatusValues.ERROR}/>;
         }
     }
 
     render() {
         const {gameStatus, player} = this.state;
-
+        console.log(gameStatus);
 
         return (
             <div className="tic-tac-toe-container">
@@ -92,15 +95,15 @@ class TicTacToeGame extends Component {
                     gameStatus={gameStatus}
                     playerMakingMove={player}
                     numTiles={NUM_TILES}
-                    updateGameStatus={this.updateGameStatus}
-                    updateToNextPlayerMakingMove={this.updateToNextPlayerMakingMove}
-                    shouldGameBeReset={shouldGameBeReset}
-                    isValidMoveOnBoard={isValidMoveOnBoard}
-                    analyzeGameBoardForEndConditions={analyzeGameBoardForEndConditions}
-                    endOfGameCheck={this.endOfGameCheck}
+                    updateGameStatus={(newValue) => this.updateGameStatus(newValue)}
+                    updateToNextPlayerMakingMove={() => this.updateToNextPlayerMakingMove()}
+                    shouldGameBeReset={(gameStatus, updateGameStatus) => shouldGameBeReset(gameStatus, updateGameStatus)}
+                    isValidMoveOnBoard={(playerMove, board, updateGameStatus) => isValidMoveOnBoard(playerMove, board, updateGameStatus)}
+                    analyzeGameBoardForEndConditions={(board) => analyzeGameBoardForEndConditions(board)}
+                    endOfGameCheck={() => this.endOfGameCheck()}
                 />
                 <br/>
-                {this.endOfGameCheck()}
+                {this.gameMessage()}
             </div>
         );
     }

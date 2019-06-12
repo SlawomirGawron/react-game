@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 function EndOfGameText(props) {
     return (
         <Typography variant="h4" component="h2" gutterBottom>
-            Game Status: {props.gameStatus}
+            {props.gameStatus}
         </Typography>
     )
 }

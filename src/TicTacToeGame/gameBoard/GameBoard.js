@@ -52,6 +52,7 @@ class GameBoard extends Component {
             updateToNextPlayerMakingMove();
             endOfGameCheck();
         }
+
     }
 
     checkForBoardReset() {
