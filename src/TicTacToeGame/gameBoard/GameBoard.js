@@ -40,34 +40,44 @@ class GameBoard extends Component {
 
     onClickTile(tileIndex) {
         const {boardOfPlayerMoves} = this.state;
-        const { isValidMoveOnBoard,
+        const { getGameStatus,
+                isValidMoveOnBoard,
                 updateGameStatus,
                 analyzeGameBoardForEndConditions,
                 updateToNextPlayerMakingMove,
-                endOfGameCheck } = this.props;
+                notEndOfGameCheck,
+                convertGameStatusToInvalidMove } = this.props;
 
-        if (isValidMoveOnBoard(tileIndex, boardOfPlayerMoves, updateGameStatus)) {
-            this.updateGameBoard(tileIndex);
-            updateGameStatus(analyzeGameBoardForEndConditions(boardOfPlayerMoves));
-            updateToNextPlayerMakingMove();
-            endOfGameCheck();
+        if (notEndOfGameCheck(getGameStatus())) {
+            if (isValidMoveOnBoard(tileIndex, boardOfPlayerMoves)) {
+                this.updateGameBoard(tileIndex);
+                updateGameStatus(analyzeGameBoardForEndConditions(boardOfPlayerMoves));
+                updateToNextPlayerMakingMove();
+
+            } else {
+                convertGameStatusToInvalidMove();
+            }
         }
 
     }
 
     checkForBoardReset() {
-        const { gameStatus,
+        const { getGameStatus,
                 shouldGameBeReset,
-                updateGameStatus } = this.props;
+                convertGameStatusToInProgress } = this.props;
 
-        if (shouldGameBeReset(gameStatus, updateGameStatus)) {
+        if (shouldGameBeReset(getGameStatus())) {
             this.initializeBoard();
+            convertGameStatusToInProgress();
         }
+    }
+
+    componentDidUpdate() {
+        this.checkForBoardReset();
     }
 
     render() {
         const {boardOfPlayerMoves} = this.state;
-        this.checkForBoardReset();
 
         return (
             <TileGrid>
@@ -85,15 +95,17 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-    gameStatus: PropTypes.string.isRequired,
     playerMakingMove: PropTypes.string.isRequired,
     numTiles: PropTypes.number.isRequired,
+    getGameStatus: PropTypes.func.isRequired,
     shouldGameBeReset: PropTypes.func.isRequired,
     updateGameStatus: PropTypes.func.isRequired,
     updateToNextPlayerMakingMove: PropTypes.func.isRequired,
     isValidMoveOnBoard: PropTypes.func.isRequired,
     analyzeGameBoardForEndConditions: PropTypes.func.isRequired,
-    endOfGameCheck: PropTypes.func.isRequired,
+    notEndOfGameCheck: PropTypes.func.isRequired,
+    convertGameStatusToInProgress: PropTypes.func.isRequired,
+    convertGameStatusToInvalidMove: PropTypes.func.isRequired
 };
 
 export default GameBoard;

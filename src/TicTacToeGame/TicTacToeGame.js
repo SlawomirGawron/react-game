@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {analyzeGameBoardForEndConditions,
-        isValidMoveOnBoard,
-        shouldGameBeReset,
-        endOfGameCheck} from './gameLogic/Logic';
+import { analyzeGameBoardForEndConditions,
+         isValidMoveOnBoard,
+         shouldGameBeReset,
+         notEndOfGameCheck } from './gameLogic/Logic';
 
 import GameBoard from "./gameBoard/GameBoard";
 import {gameStatusValues, players} from "src/common/utilities/ENUMS";
@@ -19,19 +19,25 @@ class TicTacToeGame extends Component {
         super(props);
         this.state = {
             player: players.ONE,
-            gameStatus: gameStatusValues.NEWGAME,
+            gameStatus: gameStatusValues.GAMEINPROGRESS,
         };
 
         this.updateGameStatus = this.updateGameStatus.bind(this);
         this.updateToNextPlayerMakingMove = this.updateToNextPlayerMakingMove.bind(this);
         this.resetButtonHandleClick = this.resetButtonHandleClick.bind(this);
-        this.endOfGameCheck = this.endOfGameCheck.bind(this);
+        this.getGameStatus = this.getGameStatus.bind(this);
     }
 
     updateGameStatus(newValue) {
         this.setState({
             gameStatus: newValue
         });
+    }
+
+    getGameStatus() {
+        const { gameStatus } = this.state;
+
+        return gameStatus;
     }
 
     updateToNextPlayerMakingMove() {
@@ -50,18 +56,14 @@ class TicTacToeGame extends Component {
 
     resetButtonHandleClick() {
         this.setState({
-            isDisabledEndOfGameText: false,
+            player: players.ONE,
             gameStatus: gameStatusValues.NEWGAME
         });
     }
 
-    endOfGameCheck() {
-        console.log("EoG");
-    }
-
     gameMessage() {
-        const {gameStatus} = this.state;
-        const messageToDisplay = "Game Status: " + gameStatus;
+        const {gameStatus, player } = this.state;
+        let messageToDisplay = "Game Status: " + gameStatus;
 
         if ( (gameStatus === gameStatusValues.NEWGAME)
              || (gameStatus === gameStatusValues.PLAYERONEWIN)
@@ -71,8 +73,11 @@ class TicTacToeGame extends Component {
         ) {
             return <EndOfGameText gameStatus={messageToDisplay}/>;
 
-        } else if ( (gameStatus === gameStatusValues.GAMEINPROGRESS)
-                    || (gameStatus === gameStatusValues.VALIDMOVE)
+        } else if ( (gameStatus === gameStatusValues.GAMEINPROGRESS) ) {
+            messageToDisplay = messageToDisplay + ", player " + player + " move.";
+            return <Message text={messageToDisplay}/>;
+
+        } else if ( (gameStatus === gameStatusValues.VALIDMOVE)
                     || (gameStatus === gameStatusValues.INVALIDMOVE)
         ) {
             return <Message text={messageToDisplay}/>;
@@ -81,9 +86,16 @@ class TicTacToeGame extends Component {
         }
     }
 
+    convertGameStatusToInProgress() {
+        this.updateGameStatus(gameStatusValues.GAMEINPROGRESS);
+    }
+
+    convertGameStatusToInvalidMove() {
+        this.updateGameStatus(gameStatusValues.INVALIDMOVE);
+    }
+
     render() {
-        const {gameStatus, player} = this.state;
-        console.log(gameStatus);
+        const {player} = this.state;
 
         return (
             <div className="tic-tac-toe-container">
@@ -92,15 +104,18 @@ class TicTacToeGame extends Component {
                 <br/>
                 <br/>
                 <GameBoard
-                    gameStatus={gameStatus}
                     playerMakingMove={player}
                     numTiles={NUM_TILES}
+                    getGameStatus={() => this.getGameStatus()}
                     updateGameStatus={(newValue) => this.updateGameStatus(newValue)}
                     updateToNextPlayerMakingMove={() => this.updateToNextPlayerMakingMove()}
                     shouldGameBeReset={(gameStatus, updateGameStatus) => shouldGameBeReset(gameStatus, updateGameStatus)}
                     isValidMoveOnBoard={(playerMove, board, updateGameStatus) => isValidMoveOnBoard(playerMove, board, updateGameStatus)}
                     analyzeGameBoardForEndConditions={(board) => analyzeGameBoardForEndConditions(board)}
-                    endOfGameCheck={() => this.endOfGameCheck()}
+                    notEndOfGameCheck={(gameStatus) => notEndOfGameCheck(gameStatus)}
+                    convertGameStatusToInProgress={() => this.convertGameStatusToInProgress()}
+                    convertGameStatusToInvalidMove={() => this.convertGameStatusToInvalidMove()}
+
                 />
                 <br/>
                 {this.gameMessage()}
