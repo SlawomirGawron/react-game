@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import TileGrid from "./tileGrid/TileGrid";
 import Tile from "src/TicTacToeGame/gameBoard/tileGrid/tile/Tile";
 import {createArrayWithInitialValue} from "src/common/utilities/utilities";
-
 import './GameBoard.scss';
 
 class GameBoard extends Component {
