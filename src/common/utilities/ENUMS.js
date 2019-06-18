@@ -1,4 +1,3 @@
-// Constants or names.
 export const players = {
     ONE: "X",
     TWO: "O"
