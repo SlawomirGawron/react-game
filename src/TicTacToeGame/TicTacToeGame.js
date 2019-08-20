@@ -3,13 +3,14 @@ import { analyzeGameBoardForEndConditions,
          isValidMoveOnBoard,
          shouldGameBeReset,
          notEndOfGameCheck } from './gameLogic/Logic';
-
 import GameBoard from "./gameBoard/GameBoard";
 import {gameStatusValues, players} from "src/common/utilities/ENUMS";
 import Title from "src/common/components/text/title/Title";
 import Message from "src/common/components/text/message/Message";
 import ResetButton from "src/common/components/buttons/resetButton/ResetButton";
 import EndOfGameText from "src/common/components/text/endOfGameText/EndOfGameText";
+
+
 import './TicTacToeGame.scss';
 
 const NUM_TILES = 9;
@@ -100,9 +101,8 @@ class TicTacToeGame extends Component {
         return (
             <div className="tic-tac-toe-container">
                 <Title text="Tic Tac Toe Game"/>
+                <hr />
                 <ResetButton onClick={()=> this.resetButtonHandleClick()}/>
-                <br/>
-                <br/>
                 <GameBoard
                     playerMakingMove={player}
                     numTiles={NUM_TILES}
@@ -115,9 +115,7 @@ class TicTacToeGame extends Component {
                     notEndOfGameCheck={(gameStatus) => notEndOfGameCheck(gameStatus)}
                     convertGameStatusToInProgress={() => this.convertGameStatusToInProgress()}
                     convertGameStatusToInvalidMove={() => this.convertGameStatusToInvalidMove()}
-
                 />
-                <br/>
                 {this.gameMessage()}
             </div>
         );

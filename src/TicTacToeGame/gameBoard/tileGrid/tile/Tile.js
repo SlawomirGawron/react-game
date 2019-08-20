@@ -9,6 +9,7 @@ function Tile(props) {
             key={props.tileIndexInGrid}
             className="tic-tac-toe-tile"
             onClick={() => props.onClickTile(props.tileIndexInGrid)}
+
         >
             {props.tileValue}
         </div>

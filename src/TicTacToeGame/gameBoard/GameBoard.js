@@ -81,16 +81,18 @@ class GameBoard extends Component {
         const {boardOfPlayerMoves} = this.state;
 
         return (
-            <TileGrid>
-                {boardOfPlayerMoves.map((tileValue, tileIndexInGrid) =>
-                    <Tile
-                        key={tileIndexInGrid}
-                        tileIndexInGrid={tileIndexInGrid}
-                        tileValue={tileValue}
-                        onClickTile={this.onClickTile}
-                    />
-                )}
-            </TileGrid>
+            <div className="game-board">
+                <TileGrid>
+                    {boardOfPlayerMoves.map((tileValue, tileIndexInGrid) =>
+                        <Tile
+                            key={tileIndexInGrid}
+                            tileIndexInGrid={tileIndexInGrid}
+                            tileValue={tileValue}
+                            onClickTile={this.onClickTile}
+                        />
+                    )}
+                </TileGrid>
+            </div>
         );
     }
 }
