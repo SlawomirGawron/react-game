@@ -12,7 +12,7 @@ const styles = theme => ({
         fontSize: "34px",
         letterSpacing: "2px",
         wordSpacing: "2px",
-        color: "black",
+        color: "white",
         fontWeight: "700",
         textDecoration: "none solid rgb(68, 68, 68)",
         fontStyle: "italic",

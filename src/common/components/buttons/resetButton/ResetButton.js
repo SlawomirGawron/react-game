@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     resetButton: {
         margin: theme.spacing(1),
         color: "black",
-        border: "3px solid red"
+        border: "3px solid green"
     },
 }));
 
@@ -19,6 +19,7 @@ function ResetButton(props) {
     return (
         <Button
             className={classes.resetButton}
+            id="reset-button"
             variant="outlined"
             color="inherit"
             onClick={props.onClick}

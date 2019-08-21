@@ -3,4 +3,23 @@ $tile-fallback-background: #000000;  /* fallback for old browsers */
 $tile-background1: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
 $tile-background2: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+// GameBoard background colour.
+$game-board-fallback-background: #000000;  /* fallback for old browsers */
+$game-board-background1: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+$game-board-background2: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// Title background color
+$title-fallback-background: #000000;  /* fallback for old browsers */
+$title-background1: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+$title-background2: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// tic-tac-toe-container-game-board background color
+$tic-tac-toe-container-game-board-fallback-background: #000000;  /* fallback for old browsers */
+$tic-tac-toe-container-game-board-background1: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+$tic-tac-toe-container-game-board-background2: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// tic-tac-toe-container-game-status background color
+$tic-tac-toe-container-game-status-background: #000000;  /* fallback for old browsers */
+
+
 

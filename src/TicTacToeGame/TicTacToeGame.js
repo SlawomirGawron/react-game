@@ -100,23 +100,30 @@ class TicTacToeGame extends Component {
 
         return (
             <div className="tic-tac-toe-container">
-                <Title text="Tic Tac Toe Game"/>
+                <div className="tic-tac-toe-container-title">
+                    <Title text="Tic-Tac-Toe Game"/>
+                </div>
                 <hr />
-                <ResetButton onClick={()=> this.resetButtonHandleClick()}/>
-                <GameBoard
-                    playerMakingMove={player}
-                    numTiles={NUM_TILES}
-                    getGameStatus={() => this.getGameStatus()}
-                    updateGameStatus={(newValue) => this.updateGameStatus(newValue)}
-                    updateToNextPlayerMakingMove={() => this.updateToNextPlayerMakingMove()}
-                    shouldGameBeReset={(gameStatus, updateGameStatus) => shouldGameBeReset(gameStatus, updateGameStatus)}
-                    isValidMoveOnBoard={(playerMove, board, updateGameStatus) => isValidMoveOnBoard(playerMove, board, updateGameStatus)}
-                    analyzeGameBoardForEndConditions={(board) => analyzeGameBoardForEndConditions(board)}
-                    notEndOfGameCheck={(gameStatus) => notEndOfGameCheck(gameStatus)}
-                    convertGameStatusToInProgress={() => this.convertGameStatusToInProgress()}
-                    convertGameStatusToInvalidMove={() => this.convertGameStatusToInvalidMove()}
-                />
-                {this.gameMessage()}
+                <div className="tic-tac-toe-container-game-board">
+                    <ResetButton onClick={()=> this.resetButtonHandleClick()}/>
+                    <GameBoard
+                        playerMakingMove={player}
+                        numTiles={NUM_TILES}
+                        getGameStatus={() => this.getGameStatus()}
+                        updateGameStatus={(newValue) => this.updateGameStatus(newValue)}
+                        updateToNextPlayerMakingMove={() => this.updateToNextPlayerMakingMove()}
+                        shouldGameBeReset={(gameStatus, updateGameStatus) => shouldGameBeReset(gameStatus, updateGameStatus)}
+                        isValidMoveOnBoard={(playerMove, board, updateGameStatus) => isValidMoveOnBoard(playerMove, board, updateGameStatus)}
+                        analyzeGameBoardForEndConditions={(board) => analyzeGameBoardForEndConditions(board)}
+                        notEndOfGameCheck={(gameStatus) => notEndOfGameCheck(gameStatus)}
+                        convertGameStatusToInProgress={() => this.convertGameStatusToInProgress()}
+                        convertGameStatusToInvalidMove={() => this.convertGameStatusToInvalidMove()}
+                    />
+
+                </div>
+                <div className="tic-tac-toe-container-game-status">
+                    {this.gameMessage()}
+                </div>
             </div>
         );
     }

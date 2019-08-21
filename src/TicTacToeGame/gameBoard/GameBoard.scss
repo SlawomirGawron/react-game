@@ -1,3 +1,5 @@
+@import "../../common/utilities/_variables.scss";
+
 .game-board {
   display: flex;
   justify-content: center;
@@ -5,9 +7,17 @@
   height: 350px;
   width: 350px;
 
-  background: #8E0E00;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #1F1C18, #8E0E00);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #1F1C18, #8E0E00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $game-board-fallback-background;
+  background: $game-board-background1;
+  background: $game-board-background2;
 
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 18px black;
+}
 
+@media screen and (max-width: 319px) {
+  .game-board {
+    margin: auto;
+  }
 }

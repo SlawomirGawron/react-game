@@ -1,18 +1,15 @@
 @import "../../../../common/utilities/_variables.scss";
 
 .tic-tac-toe-tile {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: double green;
+  line-height: 100px;
+  color: white;
+
   background: $tile-fallback-background;
   background: $tile-background1;
   background: $tile-background2;
-
-  background: #000000;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  width: 100px;
-  height: 100px;
-  border: double white;
-  display: inline-block;
-  line-height: 100px;
-  color: white;
 }
+
