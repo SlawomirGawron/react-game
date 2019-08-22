@@ -14,12 +14,12 @@ $title-background1: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Ch
 $title-background2: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 // tic-tac-toe-container-game-board background color
-$tic-tac-toe-container-game-board-fallback-background: #000000;  /* fallback for old browsers */
-$tic-tac-toe-container-game-board-background1: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-$tic-tac-toe-container-game-board-background2: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$tic-tac-toe-container-game-board-background: #000000;  /* fallback for old browsers */
 
 // tic-tac-toe-container-game-status background color
-$tic-tac-toe-container-game-status-background: #000000;  /* fallback for old browsers */
+$tic-tac-toe-container-game-status-fallback-background: #000000;  /* fallback for old browsers */
+$tic-tac-toe-container-game-status-background1: -webkit-linear-gradient(to top, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+$tic-tac-toe-container-game-status-background2: linear-gradient(to top, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 

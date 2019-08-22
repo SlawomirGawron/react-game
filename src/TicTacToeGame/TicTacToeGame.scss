@@ -31,9 +31,7 @@
   height: 100%;
   width: 100%;
 
-  background: $tic-tac-toe-container-game-board-fallback-background;
-  background: $tic-tac-toe-container-game-board-background1;
-  background: $tic-tac-toe-container-game-board-background2;
+  background: $tic-tac-toe-container-game-board-background;
 }
 
 .tic-tac-toe-container-game-status {
@@ -41,6 +39,7 @@
   justify-content: center;
   height: 100%;
   width: 100%;
+  padding-top: 1rem;
 
 
   font-family: Comic Sans MS, cursive, sans-serif;
@@ -54,7 +53,10 @@
   text-transform: none;
   color: white;
 
-  background: $tic-tac-toe-container-game-status-background;
+  background: $tic-tac-toe-container-game-status-fallback-background;
+  background: $tic-tac-toe-container-game-status-background1;
+  background: $tic-tac-toe-container-game-status-background2;
+
 }
 
 hr {
@@ -68,4 +70,33 @@ hr {
   margin-inline-start: auto;
   margin-inline-end: auto;
   border-width: 0;
+}
+
+@media screen and (max-width: 370px) {
+  .tic-tac-toe-container-game-status {
+    padding-top: 0;
+  }
+
+}
+
+@media screen and (max-width: 179px) {
+  .tic-tac-toe-container-title {
+    margin: auto;
+    width: 200px;
+  }
+
+  hr {
+    margin: auto;
+    width: 200px;
+  }
+
+  .tic-tac-toe-container-game-board {
+    margin: auto;
+    width: 200px;
+  }
+
+  .tic-tac-toe-container-game-status {
+    margin: auto;
+    width: 200px;
+  }
 }

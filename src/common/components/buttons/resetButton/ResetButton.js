@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     resetButton: {
         margin: theme.spacing(1),
         color: "black",
-        border: "3px solid green"
+        border: "2px solid black"
     },
 }));
 

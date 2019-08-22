@@ -1,16 +1,11 @@
 .main-app {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-@media screen and (max-height: 590px) {
-  .main-app {
-    overflow-y: auto;
-  }
-}
-
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 179px) {
   .main-app {
     overflow-x: auto;
   }
