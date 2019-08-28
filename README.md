@@ -1,3 +1,23 @@
+# Slawomir Gawron React Game
+
+The following website was created using 
+ - React
+ - HTML
+ - CSS/SCSS
+ 
+The primary purpose of this game was to translate some of the knowledge that I acquired over the years,
+in various languages, to a React based web application. The majority of my React knowledge comes from diligent self study, 
+while working regular hours at my current employment. I wish I had unlimited time to fine tune my various projects and make them "perfect", 
+but that is just not possible at the moment.
+
+So far I have only implemented a "basic" Tic-Tac-Toe game. In the future, under this project, I intend to create more games 
+that share functionality.
+
+Enjoy the game!
+ 
+# Boilerplate React App commands
+
+#React Boilerplate
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
