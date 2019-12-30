@@ -9,7 +9,7 @@ export const gameStatusValues = {
     VALIDMOVE: "A player has made a valid move",
     GAMEINPROGRESS: "Currently in progress",
     PLAYERONEWIN: "Player 1 (X) has won",
-    PLAYERTWOWIN: "Player 2 (Y) has won",
+    PLAYERTWOWIN: "Player 2 (O) has won",
     TIE: "Tie",
     ERROR: "Error"
 };
